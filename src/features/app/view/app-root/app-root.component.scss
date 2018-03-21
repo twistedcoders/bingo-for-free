@@ -1,0 +1,42 @@
+h1 {
+  color: red;
+}
+
+div.card {
+  display: inline-block;
+  padding: 5px;
+
+  button.bingo {
+    background-color: greenyellow;
+    padding: 10px;
+    font-weight: bold;
+  }
+
+  &.won {
+    background-color: gold;
+    pointer-events:none;
+
+    button.bingo {
+      background-color: gold;
+    }
+  }
+}
+
+table {
+  tr {
+    td {
+      width: 50px;
+      height: 40px;
+      text-align: center;
+    }
+  }
+}
+
+div.daubs {
+  button {
+    &.selected {
+      font-weight: bold;
+    }
+  }
+}
+

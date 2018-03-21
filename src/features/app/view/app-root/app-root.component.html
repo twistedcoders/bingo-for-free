@@ -1,3 +1,40 @@
-<h1>My App</h1>
+<h1>
+  Bingo for Free (Points {{points}})
+  <button (click)="addCard()">Add Card</button>
+</h1>
 
-<router-outlet></router-outlet>
+<div class="picked-balls">
+  <table border="1">
+    <tr>
+      <td *ngFor="let ball of pickedBalls | slice:0:5">{{ball}}</td>
+    </tr>
+  </table>
+
+  <button (click)="restart()">restart</button>
+</div>
+
+<div class="card" [class.won]="card.won" *ngFor="let card of cards">
+  <br>
+  <table border="1">
+    <tr *ngFor="let row of card.rows">
+      <td *ngFor="let cell of row.cells"
+        (click)="daubCell(row, cell)"
+        [class.won]="cell.won"
+        [style.backgroundColor]="cell.daub?.color">{{cell.text}}</td>
+    </tr>
+  </table>
+
+  <p>
+    <button (click)="bingo(card)" class="bingo">BINGO</button>
+    <button (click)="removeCard(card)">Remove</button>
+  </p>
+</div>
+
+<div class="daubs">
+  <button *ngFor="let daub of daubs"
+    [style.backgroundColor]="daub.color"
+    [class.selected]="selectedDaub == daub"
+    (click)="selectDaub(daub)">
+    {{ daub.color }}
+  </button>
+</div>
